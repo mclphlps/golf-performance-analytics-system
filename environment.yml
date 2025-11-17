@@ -1,0 +1,55 @@
+name: golfcapstone
+
+# Using the conda-forge channel (large, community-maintained catalog, great Windows support).
+channels:
+  - conda-forge
+
+dependencies:
+  # ---- Core / Jupyter ----
+  - python=3.11           # The Python version my project runs on
+  - jupyterlab=4.4.*      # The main IDE-like interface in the browser (Lab v4.4 series)
+  - notebook=7.4.*        # Notebook server (pairs with Lab 4.4)
+  - ipykernel             # Lets this env show up as a selectable kernel in notebooks
+  - ipywidgets            # Interactive widgets (sliders, dropdowns, maps) in notebooks/Lab
+
+  # ---- Data stack ----
+  - pandas                # Dataframes: load/clean/join/export data
+  - numpy                 # Fast math/arrays; many libraries depend on it
+  - pyarrow               # Fast Parquet/Feather I/O; speeds up saving/loading big tables
+
+  # ---- Geo stack ----
+  - geopandas=0.14.*      # Spatial joins/geometry operations on tables
+  - shapely=2.0.*         # Core geometry library (points/lines/polygons)
+  - pyproj=3.6.*          # Coordinate reference system transforms (reprojecting coords)
+  - fiona=1.9.*           # File I/O for shapefiles/GeoPackages/etc.
+  - rtree                 # Spatial indexing (speeds up spatial queries)
+  - folium=0.15.*         # Quick leaflet web maps from Python
+  - contextily            # Optional basemap tiles (background maps) for static plots
+
+  # ---- Timezones / Geocoding ----
+  - geopy                 # Geocoding clients (Nominatim, ArcGIS) to get lat/lon from names
+  - timezonefinder        # Derive IANA timezone from lat/lon (e.g., America/New_York)
+  - pytz                  # Timezone utilities (still used by some libs)
+  - tzdata                # Timezone database so conversions work offline
+
+  # ---- Viz ----
+  - matplotlib=3.9.*      # Standard plotting library (histograms, lines, bars, etc.)
+  - seaborn               # High-level statistical plots on top of matplotlib
+
+  # ---- Excel writers ----
+  - openpyxl              # Write/read modern .xlsx files
+  - xlsxwriter            # Alternative Excel writer (good formatting support)
+
+  # ---- Utilities ----
+  - requests              # Robust HTTP client (downloading/uploading data)
+  - tqdm                  # Progress bars for loops (nice for geocoding batches)
+  - python-dotenv         # Securely load secrets from .env into the notebook runtime
+
+  # ---- Interactive tables/grids (stable alternatives to the CSV tab) ----
+  - ipydatagrid           # Fast spreadsheet-like grid widget in notebooks (sort/filter/scroll)
+
+  # ---- Pip-only packages ----
+  - pip                   # Allow installing packages only available via pip
+  - pip:
+      - keplergl                 # 3D/2D map visualization widget inside notebooks
+      - itables                  # Sort/filter/search DataFrames inside a notebook cell

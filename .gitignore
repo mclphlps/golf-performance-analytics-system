@@ -1,0 +1,23 @@
+# ---- Secrets / credentials ----
+.env
+*.env
+*.key
+*.pem
+
+# ---- Jupyter noise ----
+.ipynb_checkpoints/
+*.ipynb checkpoints/
+
+# ---- OS / editor noise ----
+.DS_Store
+Thumbs.db
+.vscode/
+__pycache__/
+*.pyc
+
+# ---- Data dumps ----
+data/
+
+# ---- Old notebooks and checkpoints ----
+notebooks/private/
+notebooks/.ipynb_checkpoints/

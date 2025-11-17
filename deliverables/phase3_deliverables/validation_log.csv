@@ -1,0 +1,37 @@
+ts,context,required_cols,missing_cols,passed,rows,cols
+2025-11-16 19:33:12,2.1 Load Raw GolfShot Data,"['Name', 'Round DateTime (UTC)', 'Facility Name', 'Course Name', 'Round Score', 'Round GIR', 'Hole Number', 'Hole Score', 'Shot Start Latitude', 'Shot Start Longitude']",[],True,4287,24
+2025-11-16 19:33:12,2.2 Standardize Schema & Datatypes,"['row_id', 'player_name', 'round_dt', 'facility', 'course', 'hole_number', 'hole_score', 'round_score', 'round_gir', 'shot_start_lat', 'shot_start_lon']",[],True,4287,24
+2025-11-16 19:33:12,2.5 Initial Vendor Yardage Validation,"['row_id', 'shot_start_lat', 'shot_start_lon', 'shot_end_lat', 'shot_end_lon']",[],True,4287,24
+2025-11-16 19:33:15,3.1.1 Filter Invalid Hole Records – source check,"['row_id', 'player_name', 'round_dt', 'facility', 'course', 'hole_number', 'hole_score', 'round_score']",[],True,4287,29
+2025-11-16 19:33:15,3.1.1 Filter Invalid Hole Records – post-filter,"['row_id', 'player_name', 'round_dt', 'facility', 'course', 'hole_number', 'hole_score', 'round_score']",[],True,4012,29
+2025-11-16 19:33:15,3.1.2 Calculate Holes Scored per Round – source check,"['player_name', 'round_dt', 'facility', 'course', 'hole_number', 'hole_score']",[],True,4012,29
+2025-11-16 19:33:15,3.1.3 golf_valid input,"['player_name', 'round_dt', 'facility', 'course', 'hole_number', 'hole_score']",[],True,4012,29
+2025-11-16 19:33:15,3.1.3 holes_per_round input,"['player_name', 'round_dt', 'facility', 'course', 'holes_scored_in_round']",[],True,210,5
+2025-11-16 19:33:15,3.1.4 Keep Only Complete Rounds – source check,"['player_name', 'round_dt', 'facility', 'course', 'hole_number', 'hole_score', 'holes_scored_in_round']",[],True,4012,31
+2025-11-16 19:33:15,3.1.5 Assign Sequential Round Numbers per Player – source check,"['player_name', 'round_dt', 'facility', 'course', 'holes_scored_in_round', 'round_score']",[],True,3987,31
+2025-11-16 19:33:15,3.1.6 Assign Sequential Visit Number per Player × Course – source check,"['player_name', 'round_dt', 'facility', 'course', 'holes_scored_in_round', 'round_score', 'round_no_player']",[],True,3987,32
+2025-11-16 19:33:15,3.1.7 Create Round Identifiers & Sequencing – source check,"['player_name', 'round_dt', 'facility', 'course', 'round_no_player', 'round_no_player_course', 'holes_scored_in_round']",[],True,3987,33
+2025-11-16 19:33:15,3.1.8.1 Derive Time Features – source check,"['round_dt', 'player_name', 'facility', 'course', 'round_id', 'round_no_player', 'round_no_player_course']",[],True,3987,35
+2025-11-16 19:33:15,3.1.8.2 Validate Round Time Quality – source check,"['round_dt', 'hour', 'part_of_day', 'player_name', 'facility', 'course', 'round_id', 'round_no_player', 'round_no_player_course']",[],True,3987,41
+2025-11-16 19:33:15,3.1.8.3 Derive Seasonal & Annual Context – source check,"['round_dt', 'player_name', 'facility', 'course', 'round_id', 'round_no_player', 'round_no_player_course']",[],True,3987,42
+2025-11-16 19:33:15,3.1.10 Round-level Validity & Features Closeout,"['player_name', 'round_dt', 'facility', 'course', 'round_id', 'round_key', 'round_no_player', 'round_no_player_course', 'round_holes_scored', 'round_fairway_strokes', 'round_is_partial', 'round_time_valid', 'part_of_day', 'season', 'year', 'month', 'round_year_index']",[],True,3987,48
+2025-11-16 19:33:15,3.2.1 Derive Hole-Level Context Features – source check,"['player_name', 'round_dt', 'facility', 'course', 'hole_number', 'hole_par', 'hole_score', 'hole_gir', 'hole_fairway_strokes']",[],True,3987,48
+2025-11-16 19:33:15,3.2.2 Derive Hole-Level Putting Flags – source check,"['hole_putts', 'hole_gir']",[],True,3987,51
+2025-11-16 19:33:16,3.2.3 Derive Hole Outcome Quality Signals – source check,"['hole_par', 'hole_score', 'hole_gir', 'hole_fairway_strokes', 'hole_putts']",[],True,3987,55
+2025-11-16 19:33:16,3.2.4 Hole-Level Validity & Features Closeout,"['player_name', 'round_dt', 'facility', 'course', 'hole_number', 'hole_par', 'hole_score', 'hole_putts', 'hole_gir', 'hole_par_bucket', 'hole_strokes_over_par', 'hole_score_name', 'hole_putts_over_expected', 'hole_putts_3plus', 'hole_gir_putts_3plus', 'hole_notgir_putts_3plus', 'hole_scramble_opportunity', 'hole_scramble_success', 'hole_gir_wasted', 'hole_notgir_chip_in', 'hole_is_scoring_chance', 'hole_is_recovery']",[],True,3987,61
+2025-11-16 19:33:16,3.3.1 Build Player–Club Planning Profile,"['player_name', 'shot_club', 'yardage', 'shot_fairway_hit_type']",[],True,3987,64
+2025-11-16 19:33:16,3.3.2 Player–Club–Hole Dispersion,"['player_name', 'shot_club', 'facility', 'course', 'hole_number', 'shot_start_lat', 'shot_start_lon', 'shot_end_lat', 'shot_end_lon']",[],True,3987,64
+2025-11-16 19:33:22,3.3.3 Player–Club Dispersion Rollup,"['player_name', 'shot_club', 'total_dispersion_yards', 'left_dispersion_yards', 'right_dispersion_yards', 'shots_used']",[],True,250,16
+2025-11-16 19:33:22,3.3.4 Attach Dispersion to Player–Club Profile (base),"['player_name', 'shot_club']",[],True,14,23
+2025-11-16 19:33:22,3.3.4 Attach Dispersion to Player–Club Profile (dispersion),"['player_name', 'shot_club', 'club_total_dispersion_yards', 'holes_contributing', 'total_shots_used']",[],True,13,8
+2025-11-16 19:33:22,3.3.5 Enrich Player–Club Profile with Dispersion Cone Fields,"['player_name', 'shot_club', 'plan_distance_short', 'plan_distance_hit', 'plan_distance_long', 'plan_dispersion']",[],True,14,26
+2025-11-16 19:33:22,3.3.6 Closeout → player_club_profile,"['player_name', 'shot_club', 'shot_count', 'plan_distance_short', 'plan_distance_hit', 'plan_distance_long', 'plan_dispersion', 'dispersion_hole_count', 'dispersion_shot_count', 'disp_half_angle_rad', 'disp_half_angle_deg', 'disp_tan_half_angle', 'plan_dispersion_short', 'plan_dispersion_hit', 'plan_dispersion_long']",[],True,14,32
+2025-11-16 19:33:22,3.3.6 Closeout → player_club_hole_dispersion,"['player_name', 'shot_club', 'facility', 'course', 'hole_number', 'shots_used', 'left_dispersion_yards', 'right_dispersion_yards', 'total_dispersion_yards']",[],True,250,16
+2025-11-16 19:33:22,3.3.6 Closeout → player_club_dispersion_rollup,"['player_name', 'shot_club', 'club_left_dispersion_yards', 'club_right_dispersion_yards', 'club_total_dispersion_yards', 'holes_contributing', 'total_shots_used', 'dispersion_sufficient']",[],True,13,8
+2025-11-16 19:33:22,3.4.1 Build / Refresh Facilities Table,"['facility', 'course', 'round_dt', 'round_id']",[],True,3987,64
+2025-11-16 19:33:22,3.4.2 Derive Shot-Based Facility Centroids (golf_valid),"['facility', 'course', 'shot_start_lat', 'shot_start_lon', 'shot_end_lat', 'shot_end_lon']",[],True,3987,64
+2025-11-16 19:33:22,3.4.2 Derive Shot-Based Facility Centroids (facilities),"['facility', 'course', 'first_seen_round_dt', 'last_seen_round_dt', 'rounds_observed']",[],True,30,16
+2025-11-16 19:33:23,3.4.3 Geocode Remaining Facilities,"['facility', 'course', 'first_seen_round_dt', 'last_seen_round_dt', 'rounds_observed', 'shot_centroid_lat', 'shot_centroid_lon', 'hint_city', 'hint_state_abbr']",[],True,30,16
+2025-11-16 19:33:23,3.4.4 Build Facility Timezones from Coordinates,"['facility', 'course', 'geo_lat', 'geo_lon']",[],True,30,16
+2025-11-16 19:33:25,3.4.5 Enrich Facilities from GolfCourseAPI (facilities input),"['facility', 'course', 'hint_city', 'hint_state_abbr']",[],True,30,16
+2025-11-16 19:33:25,3.5.1 Create DataFrames for Phase 4,"['round_id', 'hole_number', 'round_dt', 'facility', 'course', 'player_name']",[],True,3987,64
