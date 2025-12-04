@@ -1,4 +1,4 @@
-# 🏌️‍♂️ Golf Performance Analytics Capstone
+# 🏌️‍♂️ Golf Performance Analytics System
 > A consulting-grade analytics pipeline that transforms 15 years of personal GolfShot performance data into governed, reproducible insights.
 
 **Author:** Mike Phillips  
@@ -84,7 +84,7 @@ golf-capstone/
 ├─ data/
 │   ├─ raw/                    # GolfShot exports (ignored)
 │   └─ private/                # interim artifacts (ignored)
-│   └─ processed/              # final artifacts (ignored)│
+│   └─ processed/              # final artifacts (ignored)
 │
 └─ src/
     └─ golfcourseapi_openapi.yml   # API reference schema
@@ -115,9 +115,9 @@ Every major phase produces auditable logs — **STEP_LOG**, **VALIDATION_LOG**, 
 |:--|:--|:--|
 | **1️⃣ Define** | Business Understanding | Problem statement · Success metrics · Data inventory |
 | **2️⃣ Acquire** | Data Understanding | Raw GolfShot data · Initial profiling · Completeness checks |
-| **3️⃣ Prepare** | Data Preparation | Validated round, hole, club, and facility tables |
-| **4️⃣ Analyze** | Modeling / Evaluation | Tableau / Power BI dashboards · performance trends |
-| **5️⃣ Improve** | Deployment | Scenario analysis · Practice recommendations |
+| **3️⃣ Prepare** | Data Preparation | Validated round, hole, shot, club, and facility tables |
+| **4️⃣ Analyze** | Modeling / Evaluation | Tableau dashboards · performance trends |
+| **5️⃣ Improve** | Deployment | Scenario analysis · Practice recommendations · On-course strategy recommendations |
 | **6️⃣ Control** | Maintenance | Governance package · Versioned exports · Documentation |
 
 Each notebook cell begins with a standardized metadata header:
@@ -145,10 +145,10 @@ Each notebook cell begins with a standardized metadata header:
 
 | Artifact | Description |
 |:--|:--|
-| **`golf_valid.xlsx`** | Hole-level fact table with validated rounds and derived time features |
-| **`player_club_profile.xlsx`** | Player × club statistics (distance & dispersion) |
-| **`facilities.csv`** | Geocoded facility dimension with IANA time zones |
-| **`phase3_data_preparation_closeout.xlsx`** | Governance close-out: all logs + data dictionary |
+| **`rounds.csv`**, **`holes.csv`**, **`shots.csv`** | Fact tables with validated data |
+| **`clubs.csv`** | Player × club statistics (distance & dispersion) |
+| **`facilities.csv`** | Geocoded facility dimension |
+| **`phase3_delverables`** | Governance close-out folder: all logs + data dictionary |
 
 ---
 
@@ -156,18 +156,16 @@ Each notebook cell begins with a standardized metadata header:
 
 1. **Setup & Configuration** – Environment initialization and governance setup  
 2. **Data Import & Cleaning** – Raw GolfShot ingestion, schema validation, completeness profiling  
-3. **Feature Engineering & Enrichment** – Time features, GPS validation, club & facility metrics  
-4. **Analysis & Visualization (Upcoming)** – Performance trends, dispersion, scoring breakdowns  
-5. **Improvement & Control (Upcoming)** – Actionable practice insights and controlled deployment  
+3. **Feature Engineering & Enrichment** – Time features; GPS validation; club & facility metrics; and round-, hole-, and shot-level data analysis
 
 ---
 
 ## ✅ Reproducibility Checklist
 
 - [x] All secrets managed via `.env`  
-- [x] All raw data stored in `data/raw/` (ignored)  
-- [x] Governance logs export automatically  
-- [x] Each section validated with `validate_columns()`  
+- [x] All raw and processed governed outputs stored in `data/` (ignored)  
+- [x] Governance logs and data dictionary export automatically to `deliverables/` 
+- [x] Tableau and Project WBS located in `deliverables/`  
 - [x] Conda environment pinned via `environment.yml`  
 
 ---
@@ -176,9 +174,7 @@ Each notebook cell begins with a standardized metadata header:
 
 - Integrate **weather and wind** context for environmental correlation  
 - Cross-verify course data with **USGA Slope & Rating** datasets  
-- Implement **predictive shot-outcome modeling**  
-- Deploy a **Tableau / Power BI dashboard** from governed outputs  
-- Package **governance utilities** as a reusable analytics template  
+- Implement **predictive shot-outcome modeling**    
 
 ---
 
@@ -197,5 +193,4 @@ All third-party data are used solely for educational, non-commercial analysis.
 Developed by **Mike Phillips** as part of the **NewForce WV Data Analytics Bootcamp (2025)**.  
 Special thanks to mentors for reinforcing *reproducibility, governance, and storytelling in analytics.*
 
-> *“Most of the professional projects I’ve worked on in the past are at the intersection of data, people, and improving business processes.  
-> I believe that in both my professional and personal life, “what gets measured gets managed.” — Mike Phillips*
+> *“Most of the professional projects I’ve worked on in the past are at the intersection of data, people, and improving business processes. I believe that in both my professional and personal life, “what gets measured gets managed.” — Mike Phillips*

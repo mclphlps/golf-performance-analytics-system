@@ -1,329 +1,282 @@
-table,column_name,dtype,description,lineage
-golf,player_name,string,,
-golf,round_dt,datetime64[ns],,
-golf,facility,string,,
-golf,course,string,,
-golf,round_score,Int64,,
-golf,round_fairway_hits,Int64,,
-golf,round_putts,Int64,,
-golf,round_gir,float64,,
-golf,hole_number,Int64,,
-golf,hole_par,Int64,,
-golf,hole_fairway_hit_type,string,,
-golf,hole_fairway_hits,Int64,,
-golf,hole_putts,Int64,,
-golf,hole_score,Int64,,
-golf,hole_gir,string,,
-golf,shot_club,string,,
-golf,shot_direction,string,,
-golf,shot_start_lat,Float64,,
-golf,shot_start_lon,Float64,,
-golf,shot_end_lat,Float64,,
-golf,shot_end_lon,Float64,,
-golf,yardage,Float64,,
-golf,yardage_to_pin,Float64,,
-golf,row_id,int64,,
-golf,yardage_calc,float64,,
-golf,yardage_error,Float64,,
-golf,yardage_error_abs,Float64,,
-golf,yardage_error_pct,Float64,,
-golf,yardage_suspect,boolean,,
-golf_valid_hole_features,hole_par_bucket,string,,
-golf_valid_hole_features,hole_strokes_over_par,Int64,,
-golf_valid_hole_features,hole_score_name,string,,
-golf_valid_hole_features,hole_gir,boolean,,
-golf_valid_hole_features,hole_fairway_strokes,Int64,,
-golf_valid_hole_features_putting,hole_putts_over_expected,Int64,,
-golf_valid_hole_features_putting,hole_putts_3plus,boolean,,
-golf_valid_hole_features_putting,hole_gir_putts_3plus,boolean,,
-golf_valid_hole_features_putting,hole_notgir_putts_3plus,boolean,,
-golf_valid_hole_outcome_features,hole_scramble_opportunity,boolean,,
-golf_valid_hole_outcome_features,hole_scramble_success,boolean,,
-golf_valid_hole_outcome_features,hole_gir_wasted,boolean,,
-golf_valid_hole_outcome_features,hole_notgir_chip_in,boolean,,
-golf_valid_hole_outcome_features,hole_is_scoring_chance,boolean,,
-golf_valid_hole_outcome_features,hole_is_recovery,boolean,,
-player_club_profile,player_name,string,,
-player_club_profile,shot_club,string,,
-player_club_profile,shot_count,Int64,Number of shots for this player+club,
-player_club_profile,yardage_mean,Float64,Average yardage,
-player_club_profile,yardage_std,Float64,Std dev of yardage,
-player_club_profile,yardage_min,Float64,Shortest shot observed,
-player_club_profile,yardage_max,Float64,Longest shot observed,
-player_club_profile,yardage_p25,Float64,25th percentile yardage,
-player_club_profile,yardage_p50,Float64,50th percentile yardage (plan_distance_short),
-player_club_profile,yardage_p65,Float64,65th percentile yardage (plan_distance_hit),
-player_club_profile,yardage_p80,Float64,80th percentile yardage (plan_distance_long),
-player_club_profile,yardage_p90,Float64,90th percentile yardage (rarely achieved distance),
-player_club_profile,top5_max_yardages,object,5 longest shots logged for this player+club,
-player_club_profile,plan_distance_short,Float64,Conservative / typical planning distance,
-player_club_profile,plan_distance_hit,Float64,Realistic target planning distance,
-player_club_profile,plan_distance_long,Float64,Strong-strike planning distance,
-player_club_profile,app_pct_unknown,float64,% outcomes marked Unknown by the app,
-player_club_profile,app_pct_left,float64,% outcomes marked Left by the app,
-player_club_profile,app_pct_right,float64,% outcomes marked Right by the app,
-player_club_profile,app_pct_short,float64,% outcomes marked Short by the app,
-player_club_profile,app_pct_long,float64,% outcomes marked Long by the app,
-player_club_profile,app_pct_hit,float64,% outcomes marked Hit by the app,
-player_club_profile,shots_sufficient,boolean,True if shot_count ≥ 5,
-player_club_hole_dispersion,player_name,object,,
-player_club_hole_dispersion,shot_club,object,,
-player_club_hole_dispersion,facility,object,,
-player_club_hole_dispersion,course,object,,
-player_club_hole_dispersion,hole_number,int64,,
-player_club_hole_dispersion,shots_used,int64,Number of shots on this hole used for dispersion,
-player_club_hole_dispersion,left_dispersion_yards,float64,50th percentile leftward miss (absolute yards),
-player_club_hole_dispersion,right_dispersion_yards,float64,50th percentile rightward miss (yards),
-player_club_hole_dispersion,total_dispersion_yards,float64,Left + right dispersion at chosen percentile,
-player_club_hole_dispersion,length_p50,float64,Median distance along line-of-play for this player/club/hole,
-player_club_hole_dispersion,length_pX,float64,50th percentile distance along line-of-play,
-player_club_hole_dispersion,length_max,float64,Maximum distance along line-of-play (furthest projected shot),
-player_club_hole_dispersion,calc_start_lat,float64,Latitude of hole line-of-play origin (first shot start),
-player_club_hole_dispersion,calc_start_lon,float64,Longitude of hole line-of-play origin (first shot start),
-player_club_hole_dispersion,calc_end_lat,float64,Latitude of hole line-of-play target (last shot end),
-player_club_hole_dispersion,calc_end_lon,float64,Longitude of hole line-of-play target (last shot end),
-player_club_dispersion_rollup,player_name,object,Player identifier as recorded in shots,
-player_club_dispersion_rollup,shot_club,object,Club name / label as captured by the app,
-player_club_dispersion_rollup,holes_contributing,int64,Number of hole-level dispersion rows used for this player+club,
-player_club_dispersion_rollup,club_left_dispersion_yards,float64,Final left dispersion in yards for this player+club (shot-weighted if enabled),
-player_club_dispersion_rollup,club_right_dispersion_yards,float64,Final right dispersion in yards for this player+club (shot-weighted if enabled),
-player_club_dispersion_rollup,club_total_dispersion_yards,float64,Left + right dispersion — typical width for this club,
-player_club_dispersion_rollup,total_shots_used,int64,Total number of shots across all contributing holes,
-player_club_dispersion_rollup,dispersion_sufficient,bool,True if at least 2 holes contributed data,
-player_club_profile,player_name,object,,
-player_club_profile,shot_club,object,,
-player_club_profile,shot_count,Int64,,
-player_club_profile,yardage_mean,Float64,,
-player_club_profile,yardage_std,Float64,,
-player_club_profile,yardage_min,Float64,,
-player_club_profile,yardage_max,Float64,,
-player_club_profile,yardage_p25,Float64,,
-player_club_profile,yardage_p50,Float64,,
-player_club_profile,yardage_p65,Float64,,
-player_club_profile,yardage_p80,Float64,,
-player_club_profile,yardage_p90,Float64,,
-player_club_profile,top5_max_yardages,object,,
-player_club_profile,plan_distance_short,Float64,,
-player_club_profile,plan_distance_hit,Float64,,
-player_club_profile,plan_distance_long,Float64,,
-player_club_profile,app_pct_unknown,float64,,
-player_club_profile,app_pct_left,float64,,
-player_club_profile,app_pct_right,float64,,
-player_club_profile,app_pct_short,float64,,
-player_club_profile,app_pct_long,float64,,
-player_club_profile,app_pct_hit,float64,,
-player_club_profile,shots_sufficient,boolean,,
-player_club_profile,plan_dispersion,float64,Typical left+right dispersion in yards for this player+club (from 3.3.3 rollup).,
-player_club_profile,dispersion_hole_count,float64,Number of holes that contributed to the dispersion estimate (3.3.3).,
-player_club_profile,dispersion_shot_count,float64,Total shots across contributing holes used to estimate dispersion (3.3.3).,
-facilities,facility,object,Name of the club/facility as recorded in GolfShot.,
-facilities,course,object,Name of the course/loop at that facility.,
-facilities,first_seen_round_dt,datetime64[ns],Earliest round_dt observed for this facility×course.,
-facilities,last_seen_round_dt,datetime64[ns],Latest round_dt observed for this facility×course.,
-facilities,rounds_observed,int64,Count of distinct rounds played on this facility×course in this dataset.,
-facilities,hint_city,object,USER-EDITABLE: city hint to improve geocoding/API lookup.,
-facilities,hint_state_abbr,object,USER-EDITABLE: 2-letter state hint to improve geocoding/API lookup.,
-facilities,facility_course_key,object,,
-facilities,shot_centroid_lat,float64,,
-facilities,shot_centroid_lon,float64,,
-facilities,shots_used_for_centroids,float64,,
-facilities,geo_lat,float64,,
-facilities,geo_lon,float64,,
-facilities,geo_source,object,,
-facilities,geo_query_used,object,,
-facilities,facility_tz,object,,
-golf_rounds,round_id,int64,Surrogate round key (1 row per round).,Created in 3.1.7 from canonical round key.
-golf_rounds,round_key,object,"Human-readable round identifier, stable across reruns.",Created in 3.1.7 alongside round_id.
-golf_rounds,player_name,string,Player / golfer name as captured in source.,
-golf_rounds,facility,string,Facility / club name from source.,
-golf_rounds,course,string,Course / loop name at facility.,
-golf_rounds,round_score,Int64,Total scored strokes for the round.,
-golf_rounds,round_fairway_strokes,Int64,Total fairway strokes recorded for the round.,
-golf_rounds,round_putts,Int64,Total putts recorded for the round.,
-golf_rounds,round_gir,float64,Greens in regulation value at round grain (source/derived).,
-golf_rounds,round_holes_scored,Int64,Number of distinct scored holes in this round.,Carried forward from 3.1.3/3.1.4 completeness logic.
-golf_rounds,round_is_partial,boolean,,
-golf_rounds,round_no_player,Int64,Sequential round number per player (1 = earliest).,Assigned in 3.1.5.
-golf_rounds,round_no_player_course,Int64,Sequential round (visit) number per player×course.,Assigned in 3.1.6.
-golf_rounds,round_dt,datetime64[ns],Timestamp of round start from source.,
-golf_rounds,date,string,"Calendar date of the round, derived from round_dt.",
-golf_rounds,time,string,,
-golf_rounds,hour,Int64,,
-golf_rounds,dow,string,"Day-of-week label (Mon, Tue, ...).",
-golf_rounds,is_weekend,bool,True if round_dt is Saturday or Sunday.,
-golf_rounds,part_of_day,string,"Bucketed tee-time band (Morning, Afternoon, Evening, Night, Unknown).",Derived in 3.1.8.1 and validated in 3.1.8.2.
-golf_rounds,round_time_valid,boolean,,
-golf_rounds,year,Int64,Calendar year of round_dt.,
-golf_rounds,month,Int64,Calendar month (1–12) of round_dt.,
-golf_rounds,month_name,string,3-letter month label.,
-golf_rounds,year_month,string,YYYY-MM string for easy grouping.,
-golf_rounds,season,string,Season bucket derived from month.,Derived in 3.1.8.3.
-golf_rounds,round_year_index,Int64,,
-golf_holes,round_key,object,Parent round identifier.,
-golf_holes,round_id,int64,Parent round key.,
-golf_holes,hole_id,object,Surrogate hole key = round_id + '-' + hole_number.,Created in 3.5.1 to support Tableau relationships.
-golf_holes,player_name,string,Player name (carried down from round).,
-golf_holes,facility,string,Facility / club name.,
-golf_holes,course,string,Course / loop name.,
-golf_holes,hole_number,Int64,Hole number within the round (1–18).,
-golf_holes,hole_lat,Float64,Hole latitude derived from shot level centroid,
-golf_holes,hole_lon,Float64,Hole longitude derived from shot level centroid,
-golf_holes,hole_par,Int64,Par for this hole.,
-golf_holes,hole_par_bucket,string,"String label for par (e.g. 'Par 3', 'Par 4').",Derived in 3.2.1.
-golf_holes,hole_score,Int64,Strokes taken on this hole.,
-golf_holes,hole_strokes_over_par,Int64,hole_score - hole_par.,Derived in 3.2.1.
-golf_holes,hole_score_name,string,"Golf-friendly name for outcome (Birdie, Par, Bogey, ...).",Derived in 3.2.1.
-golf_holes,hole_fairway_strokes,Int64,,
-golf_holes,hole_putts,Int64,Putts taken on this hole.,
-golf_holes,hole_putts_over_expected,Int64,Putts - 2 (simple expectation).,Derived in 3.2.2.
-golf_holes,hole_gir,boolean,Green in regulation flag.,
-golf_holes,hole_putts_3plus,boolean,Flag for 3+ putts.,
-golf_holes,hole_gir_putts_3plus,boolean,3+ putts on GIR holes.,
-golf_holes,hole_notgir_putts_3plus,boolean,3+ putts on non-GIR holes.,
-golf_holes,hole_scramble_opportunity,boolean,True if player missed GIR but still had strokes to save par.,Derived in 3.2.3.
-golf_holes,hole_scramble_success,boolean,True if scramble opportunity and par-or-better achieved.,Derived in 3.2.3.
-golf_holes,hole_gir_wasted,boolean,True if GIR but scored over par.,Derived in 3.2.3.
-golf_holes,hole_notgir_chip_in,boolean,True if non-GIR save with 0 putts.,Derived in 3.2.3.
-golf_holes,hole_is_scoring_chance,boolean,Tag for analysis: GIR or better opportunity.,Derived in 3.2.3.
-golf_holes,hole_is_recovery,boolean,Tag for analysis: scramble/recovery situation.,Derived in 3.2.3.
-golf_holes,shot_fairway_hit_type,string,Captured value from source at hole/shot marking time.,
-golf_holes,round_score,Int64,Round grain metric carried down for dashboard filtering.,
-golf_holes,round_fairway_strokes,Int64,Round grain metric carried down for dashboard filtering.,
-golf_holes,round_putts,Int64,Round grain metric carried down for dashboard filtering.,
-golf_holes,round_gir,float64,Round grain metric carried down for dashboard filtering.,
-golf_holes,round_holes_scored,Int64,Round grain metric carried down for dashboard filtering.,
-golf_holes,round_no_player,Int64,Round sequence per player (carried down).,
-golf_holes,round_no_player_course,Int64,Course-specific sequence per player (carried down).,
-golf_holes,round_dt,datetime64[ns],Round timestamp (carried down).,
-golf_holes,date,string,,
-golf_holes,dow,string,Day-of-week from round_dt (carried down).,
-golf_holes,is_weekend,bool,Weekend flag from round_dt (carried down).,
-golf_holes,part_of_day,string,Part-of-day from round_dt (carried down).,
-golf_holes,year,Int64,Year from round_dt (carried down).,
-golf_holes,month,Int64,Month from round_dt (carried down).,
-golf_holes,month_name,string,Month label from round_dt (carried down).,
-golf_holes,year_month,string,YYYY-MM from round_dt (carried down).,
-golf_holes,season,string,Season from round_dt (carried down).,
-golf_shots,round_key,object,Parent round identifier.,
-golf_shots,round_id,int64,Parent round key.,
-golf_shots,hole_id,object,Parent hole key (round_id + '-' + hole_number).,Created in 3.5.1.
-golf_shots,row_id,int64,Original row identifier from ingest (shot-level).,
-golf_shots,hole_number,Int64,Hole number this shot belongs to.,
-golf_shots,player_name,string,Player name.,
-golf_shots,facility,string,Facility / club name.,
-golf_shots,course,string,Course / loop name.,
-golf_shots,shot_club,string,Club recorded for this shot.,
-golf_shots,shot_direction,string,"Directional outcome from source app, if present.",
-golf_shots,shot_start_lat,Float64,GPS start latitude for this shot.,
-golf_shots,shot_start_lon,Float64,GPS start longitude for this shot.,
-golf_shots,shot_end_lat,Float64,GPS end latitude for this shot.,
-golf_shots,shot_end_lon,Float64,GPS end longitude for this shot.,
-golf_shots,yardage,Float64,Vendor-provided yardage for this shot.,
-golf_shots,yardage_to_pin,Float64,,
-golf_shots,yardage_calc,float64,GPS-derived yardage from 2.5.,Computed in 2.5 using geodesic distance.
-golf_shots,yardage_error,Float64,GPS-derived yardage minus vendor yardage.,Computed in 2.5 as yardage_calc - yardage.
-golf_shots,yardage_error_abs,Float64,Absolute error between GPS and vendor yardage.,
-golf_shots,yardage_error_pct,Float64,Absolute percent error between GPS and vendor yardage.,
-golf_shots,yardage_suspect,boolean,True if yardage error exceeded tolerance in 2.5.,Flagged in 2.5 when error exceeded tolerance.
-golf_shots,shot_fairway_hit_type,string,Outcome marking captured at the shot/hole entry time.,
-golf_shots,hole_lat,Float64,Hole latitude derived from shot level centroid,
-golf_shots,hole_lon,Float64,Hole longitude derived from shot level centroid,
-golf_shots,hole_par,Int64,Par for this hole.,
-golf_shots,hole_par_bucket,string,"String label for par (e.g. 'Par 3', 'Par 4').",
-golf_shots,hole_score,Int64,Strokes taken on this hole.,
-golf_shots,hole_strokes_over_par,Int64,hole_score - hole_par.,
-golf_shots,hole_score_name,string,"Golf-friendly name for outcome (Birdie, Par, Bogey, ...).",
-golf_shots,hole_fairway_strokes,Int64,,
-golf_shots,hole_putts,Int64,Putts taken on this hole.,
-golf_shots,hole_putts_over_expected,Int64,Putts - 2 (simple expectation).,
-golf_shots,hole_gir,boolean,Green in regulation flag.,
-golf_shots,hole_putts_3plus,boolean,Flag for 3+ putts.,
-golf_shots,hole_gir_putts_3plus,boolean,3+ putts on GIR holes.,
-golf_shots,hole_notgir_putts_3plus,boolean,3+ putts on non-GIR holes.,
-golf_shots,hole_scramble_opportunity,boolean,True if player missed GIR but still had strokes to save par.,
-golf_shots,hole_scramble_success,boolean,True if scramble opportunity and par-or-better achieved.,
-golf_shots,hole_gir_wasted,boolean,True if GIR but scored over par.,
-golf_shots,hole_notgir_chip_in,boolean,True if non-GIR save with 0 putts.,
-golf_shots,hole_is_scoring_chance,boolean,Tag for analysis: GIR or better opportunity.,
-golf_shots,hole_is_recovery,boolean,Tag for analysis: scramble/recovery situation.,
-golf_shots,round_score,Int64,Round-level metric carried down for dashboard filtering.,
-golf_shots,round_putts,Int64,Round-level metric carried down for dashboard filtering.,
-golf_shots,round_gir,float64,Round-level metric carried down for dashboard filtering.,
-golf_shots,round_holes_scored,Int64,Round-level metric carried down for dashboard filtering.,
-golf_shots,round_no_player,Int64,Player-level round sequence (carried down).,
-golf_shots,round_no_player_course,Int64,Player×course visit sequence (carried down).,
-golf_shots,round_dt,datetime64[ns],,
-golf_shots,date,string,,
-golf_shots,dow,string,Day-of-week from round_dt (carried down).,
-golf_shots,is_weekend,bool,Weekend flag from round_dt (carried down).,
-golf_shots,part_of_day,string,Part-of-day from round_dt (carried down).,
-golf_shots,year,Int64,Year from round_dt (carried down).,
-golf_shots,month,Int64,Month from round_dt (carried down).,
-golf_shots,month_name,string,Month label from round_dt (carried down).,
-golf_shots,year_month,string,YYYY-MM from round_dt (carried down).,
-golf_shots,season,string,Season from round_dt (carried down).,
-golf_valid,player_name,string,,
-golf_valid,round_dt,datetime64[ns],,
-golf_valid,facility,string,,
-golf_valid,course,string,,
-golf_valid,round_score,Int64,,
-golf_valid,round_fairway_strokes,Int64,,
-golf_valid,round_putts,Int64,,
-golf_valid,round_gir,float64,,
-golf_valid,hole_number,Int64,,
-golf_valid,hole_par,Int64,,
-golf_valid,shot_fairway_hit_type,string,,
-golf_valid,hole_fairway_strokes,Int64,,
-golf_valid,hole_putts,Int64,,
-golf_valid,hole_score,Int64,,
-golf_valid,hole_gir,boolean,,
-golf_valid,shot_club,string,,
-golf_valid,shot_direction,string,,
-golf_valid,shot_start_lat,Float64,,
-golf_valid,shot_start_lon,Float64,,
-golf_valid,shot_end_lat,Float64,,
-golf_valid,shot_end_lon,Float64,,
-golf_valid,yardage,Float64,,
-golf_valid,yardage_to_pin,Float64,,
-golf_valid,row_id,int64,,
-golf_valid,yardage_calc,float64,,
-golf_valid,yardage_error,Float64,,
-golf_valid,yardage_error_abs,Float64,,
-golf_valid,yardage_error_pct,Float64,,
-golf_valid,yardage_suspect,boolean,,
-golf_valid,round_holes_scored,Int64,,
-golf_valid,round_is_partial,boolean,,
-golf_valid,round_no_player,Int64,,
-golf_valid,round_no_player_course,Int64,,
-golf_valid,round_id,int64,,
-golf_valid,round_key,object,,
-golf_valid,date,string,,
-golf_valid,time,string,,
-golf_valid,hour,Int64,,
-golf_valid,dow,string,,
-golf_valid,is_weekend,bool,,
-golf_valid,part_of_day,string,,
-golf_valid,round_time_valid,boolean,,
-golf_valid,year,Int64,,
-golf_valid,month,Int64,,
-golf_valid,month_name,string,,
-golf_valid,year_month,string,,
-golf_valid,season,string,,
-golf_valid,round_year_index,Int64,,
-golf_valid,hole_par_bucket,string,,
-golf_valid,hole_strokes_over_par,Int64,,
-golf_valid,hole_score_name,string,,
-golf_valid,hole_putts_over_expected,Int64,,
-golf_valid,hole_putts_3plus,boolean,,
-golf_valid,hole_gir_putts_3plus,boolean,,
-golf_valid,hole_notgir_putts_3plus,boolean,,
-golf_valid,hole_scramble_opportunity,boolean,,
-golf_valid,hole_scramble_success,boolean,,
-golf_valid,hole_gir_wasted,boolean,,
-golf_valid,hole_notgir_chip_in,boolean,,
-golf_valid,hole_is_scoring_chance,boolean,,
-golf_valid,hole_is_recovery,boolean,,
-golf_valid,hole_lat,Float64,,
-golf_valid,hole_lon,Float64,,
-golf_valid,hole_gps_points,Int64,,
-golf_valid,hole_id,object,Surrogate hole key added in 3.5.1; not present in raw source.,Created in 3.5.1 to support dimensional exports.
+table,column_name,dtype,description
+golf_valid,player_name,string,Golfer name as captured in the original GolfShot export.
+golf_valid,round_dt,datetime64[ns],Timestamp for the round (date + time) at which the hole/shot was recorded.
+golf_valid,facility,string,Golf facility or club name from the source system.
+golf_valid,course,string,"Specific course/loop at the facility (e.g., Front 9, Back 9, Championship)."
+golf_valid,round_score,Int64,"Total strokes recorded for the round, including all scored holes."
+golf_valid,round_fairway_strokes,Int64,Total number of fairway strokes in the round as reported by GolfShot.
+golf_valid,round_putts,Int64,Total number of putts recorded for the round.
+golf_valid,round_gir,float64,Greens in regulation value for the round (fraction or percentage depending on source).
+golf_valid,hole_number,Int64,Hole number within the round (1–18 or 1–9).
+golf_valid,hole_par,Int64,"Par value for the hole (3, 4, 5, etc.)."
+golf_valid,shot_fairway_hit_type,string,"Categorical outcome of the tee shot (e.g., Fairway, Left Rough, Right Rough, Other)."
+golf_valid,hole_fairway_strokes,Int64,Number of fairway strokes recorded on this hole.
+golf_valid,hole_putts,Int64,Number of putts taken on this hole.
+golf_valid,hole_score,Int64,Total strokes taken on this hole.
+golf_valid,hole_gir,boolean,Boolean flag indicating whether the green was reached in regulation on this hole.
+golf_valid,shot_club,string,"Club name used for the shot (e.g., 1W, 7I, PW)."
+golf_valid,shot_direction,string,"Directional miss label from the source (e.g., Left, Right, Long, Short, Hit)."
+golf_valid,shot_start_lat,Float64,Latitude coordinate of the shot starting point.
+golf_valid,shot_start_lon,Float64,Longitude coordinate of the shot starting point.
+golf_valid,shot_end_lat,Float64,Latitude coordinate of the shot landing point.
+golf_valid,shot_end_lon,Float64,Longitude coordinate of the shot landing point.
+golf_valid,yardage,Float64,Vendor-reported yardage for the shot from GolfShot.
+golf_valid,yardage_to_pin,Float64,"Vendor-reported yardage remaining to the pin at the time of the shot, when available."
+golf_valid,row_id,int64,Original row index from ingest used as a stable per-shot identifier.
+golf_valid,yardage_calc,float64,Geodesic or projected distance between shot_start and shot_end in yards.
+golf_valid,yardage_error,Float64,Difference between calculated yardage and vendor yardage (yardage_calc - yardage).
+golf_valid,yardage_error_abs,Float64,Absolute value of yardage_error.
+golf_valid,yardage_error_pct,Float64,Percentage error between calculated and vendor yardage.
+golf_valid,yardage_suspect,boolean,Boolean flag indicating that yardage discrepancy exceeded a quality threshold.
+golf_valid,round_holes_scored,Int64,Number of holes with valid scores recorded for the round.
+golf_valid,round_is_partial,boolean,True if the round does not contain a full 9 or 18 scored holes.
+golf_valid,round_no_player,Int64,"Sequential round index per player, ordered by round_dt."
+golf_valid,round_no_player_course,Int64,"Sequential visit index per player×course, ordered by round_dt."
+golf_valid,round_id,int64,Surrogate integer key uniquely identifying each round.
+golf_valid,round_key,object,"Human-readable round identifier (e.g., player + date + facility)."
+golf_valid,date,string,Calendar date string derived from round_dt.
+golf_valid,time,string,Clock time string derived from round_dt.
+golf_valid,hour,Int64,Hour-of-day extracted from round_dt (0–23).
+golf_valid,dow,string,"Day-of-week label (e.g., Mon, Tue, Wed)."
+golf_valid,is_weekend,bool,True if the round_dt falls on Saturday or Sunday.
+golf_valid,part_of_day,string,"Part-of-day bucket for tee time (e.g., Morning, Afternoon, Evening, Night)."
+golf_valid,round_time_valid,boolean,Boolean flag indicating whether the round time appears trustworthy (non-placeholder).
+golf_valid,year,Int64,Calendar year extracted from round_dt.
+golf_valid,month,Int64,Numeric calendar month (1–12) extracted from round_dt.
+golf_valid,month_name,string,"Month label (e.g., Jan, Feb, Mar)."
+golf_valid,year_month,string,Concatenated year-month label (YYYY-MM) for grouping.
+golf_valid,season,string,"Season bucket derived from month (e.g., Winter, Spring, Summer, Fall)."
+golf_valid,round_year_index,Int64,Sequential index of the player’s rounds within each year.
+golf_valid,hole_par_bucket,string,"Categorical description of hole par (e.g., Par 3, Par 4, Par 5)."
+golf_valid,hole_strokes_over_par,Int64,Stroke differential vs par on this hole (hole_score - hole_par).
+golf_valid,hole_score_name,string,"Golf-friendly name for hole outcome (e.g., Eagle, Birdie, Par, Bogey)."
+golf_valid,hole_putts_over_expected,Int64,"Difference between actual putts and a simple expectation (e.g., putts - 2)."
+golf_valid,hole_putts_3plus,boolean,True if the hole had three or more putts.
+golf_valid,hole_gir_putts_3plus,boolean,True if this was a GIR hole with three or more putts.
+golf_valid,hole_notgir_putts_3plus,boolean,True if this was a non-GIR hole with three or more putts.
+golf_valid,hole_scramble_opportunity,boolean,True if player missed GIR but had an opportunity to save par.
+golf_valid,hole_scramble_success,boolean,True if player converted a scramble opportunity into par or better.
+golf_valid,hole_gir_wasted,boolean,True if green was hit in regulation but score was over par.
+golf_valid,hole_notgir_chip_in,boolean,True if player holed out from off the green (chip-in) on a non-GIR hole.
+golf_valid,hole_is_scoring_chance,boolean,Flag indicating holes that presented a reasonable scoring opportunity.
+golf_valid,hole_is_recovery,boolean,Flag identifying recovery holes where player was primarily escaping trouble.
+golf_valid,hole_lat,Float64,Hole-level centroid latitude derived from shot locations (for mapping).
+golf_valid,hole_lon,Float64,Hole-level centroid longitude derived from shot locations (for mapping).
+golf_valid,hole_gps_points,Int64,
+golf_valid,hole_id,object,Composite hole identifier (round_id + '-' + hole_number) used as a grain-stable key.
+golf_rounds,round_id,int64,Surrogate primary key for each round (one row per round).
+golf_rounds,round_key,object,"Human-readable round identifier combining player, date, and facility context."
+golf_rounds,player_name,string,Golfer name for the round.
+golf_rounds,facility,string,Facility / club at which the round was played.
+golf_rounds,course,string,Specific course/loop at the facility for this round.
+golf_rounds,round_score,Int64,Total strokes recorded for the round.
+golf_rounds,round_fairway_strokes,Int64,Total fairway strokes recorded over all holes in the round.
+golf_rounds,round_putts,Int64,Total putts recorded for the round.
+golf_rounds,round_gir,float64,Greens in regulation metric for the round.
+golf_rounds,round_holes_scored,Int64,Number of scored holes included in the round.
+golf_rounds,round_is_partial,boolean,True if the round is incomplete (not a full 9 or 18 scored holes).
+golf_rounds,round_no_player,Int64,Sequential index of this round for the player (lifetime order).
+golf_rounds,round_no_player_course,Int64,Sequential index of this visit for the player at the given course.
+golf_rounds,round_dt,datetime64[ns],Timestamp of the round used as the canonical event datetime.
+golf_rounds,date,string,Date component of round_dt formatted as a string.
+golf_rounds,time,string,Time component of round_dt formatted as a string.
+golf_rounds,hour,Int64,Hour-of-day extracted from round_dt.
+golf_rounds,dow,string,Day-of-week label extracted from round_dt.
+golf_rounds,is_weekend,bool,True if round_dt falls on Saturday or Sunday.
+golf_rounds,part_of_day,string,"Tee-time band derived from hour (e.g., Morning, Afternoon, Evening)."
+golf_rounds,round_time_valid,boolean,Flag indicating that round_dt/time was not a placeholder or suspicious value.
+golf_rounds,year,Int64,Year extracted from round_dt.
+golf_rounds,month,Int64,Month (1–12) extracted from round_dt.
+golf_rounds,month_name,string,Three-letter month label extracted from round_dt.
+golf_rounds,year_month,string,YYYY-MM string used for monthly trend analysis.
+golf_rounds,season,string,"Season bucket (Winter, Spring, Summer, Fall) based on month."
+golf_rounds,round_year_index,Int64,Sequential round index for the player within each year.
+golf_holes,round_key,object,Human-readable round identifier for this hole’s parent round.
+golf_holes,round_id,int64,Parent round identifier for this hole.
+golf_holes,hole_id,object,Surrogate primary key at hole grain (round_id + '-' + hole_number).
+golf_holes,player_name,string,Golfer name for this hole.
+golf_holes,facility,string,Facility / club name where the hole was played.
+golf_holes,course,string,Course/loop name where the hole was played.
+golf_holes,hole_number,Int64,Hole number within the round.
+golf_holes,hole_lat,Float64,Hole centroid latitude derived from shot positions.
+golf_holes,hole_lon,Float64,Hole centroid longitude derived from shot positions.
+golf_holes,hole_par,Int64,"Par for the hole (3, 4, 5, etc.)."
+golf_holes,hole_par_bucket,string,"Categorical label for par (e.g., 'Par 3', 'Par 4')."
+golf_holes,hole_score,Int64,Total strokes taken on this hole.
+golf_holes,hole_strokes_over_par,Int64,Stroke differential vs par for this hole (hole_score - hole_par).
+golf_holes,hole_score_name,string,"Named scoring outcome (Eagle, Birdie, Par, Bogey, etc.)."
+golf_holes,hole_fairway_strokes,Int64,Number of fairway strokes recorded on this hole.
+golf_holes,hole_putts,Int64,Number of putts taken on this hole.
+golf_holes,hole_putts_over_expected,Int64,"Putts relative to a simple expectation baseline (e.g., putts - 2)."
+golf_holes,hole_gir,boolean,True if green in regulation was achieved on this hole.
+golf_holes,hole_putts_3plus,boolean,True if three or more putts occurred on this hole.
+golf_holes,hole_gir_putts_3plus,boolean,True if this was a GIR hole with 3+ putts (wasted green).
+golf_holes,hole_notgir_putts_3plus,boolean,True if non-GIR hole with 3+ putts (compounded error).
+golf_holes,hole_scramble_opportunity,boolean,True if player missed GIR but had a chance to save par.
+golf_holes,hole_scramble_success,boolean,True if scramble opportunity converted to par or better.
+golf_holes,hole_gir_wasted,boolean,True if GIR was achieved but score exceeded par.
+golf_holes,hole_notgir_chip_in,boolean,True if player holed out from off the green on a non-GIR hole.
+golf_holes,hole_is_scoring_chance,boolean,True if this hole represented a realistic scoring opportunity.
+golf_holes,hole_is_recovery,boolean,True if this hole is primarily a recovery / damage-control situation.
+golf_holes,shot_fairway_hit_type,string,Categorical outcome for the tee shot on this hole.
+golf_holes,round_score,Int64,Parent round score carried down for hole-level context/filtering.
+golf_holes,round_fairway_strokes,Int64,Parent round fairway strokes carried down for context.
+golf_holes,round_putts,Int64,Parent round putt count carried down for context.
+golf_holes,round_gir,float64,Parent round GIR metric carried down for context.
+golf_holes,round_holes_scored,Int64,Number of scored holes in the parent round.
+golf_holes,round_no_player,Int64,Round sequence index per player carried down for context.
+golf_holes,round_no_player_course,Int64,Round sequence index per player×course carried down.
+golf_holes,round_dt,datetime64[ns],Parent round timestamp carried down.
+golf_holes,date,string,Parent round date carried down.
+golf_holes,dow,string,Parent round day-of-week label carried down.
+golf_holes,is_weekend,bool,Parent round weekend flag carried down.
+golf_holes,part_of_day,string,Parent round part-of-day bucket carried down.
+golf_holes,year,Int64,Year from parent round_dt carried down.
+golf_holes,month,Int64,Month from parent round_dt carried down.
+golf_holes,month_name,string,Month label from parent round_dt carried down.
+golf_holes,year_month,string,Year-month label from parent round_dt carried down.
+golf_holes,season,string,Season from parent round_dt carried down.
+golf_shots,round_key,object,
+golf_shots,round_id,int64,Parent round identifier for the shot.
+golf_shots,hole_id,object,Parent hole identifier for the shot.
+golf_shots,row_id,int64,Surrogate shot-level identifier aligned with the ingestion order.
+golf_shots,hole_number,Int64,Hole number on which the shot was played.
+golf_shots,player_name,string,Golfer name for this shot.
+golf_shots,facility,string,Facility / club where the shot was taken.
+golf_shots,course,string,Course/loop where the shot was taken.
+golf_shots,shot_club,string,"Club used for the shot (e.g., driver, iron, wedge, putter)."
+golf_shots,shot_direction,string,Directional outcome classification from the source app.
+golf_shots,shot_start_lat,Float64,Latitude coordinate of the shot starting position.
+golf_shots,shot_start_lon,Float64,Longitude coordinate of the shot starting position.
+golf_shots,shot_end_lat,Float64,Latitude coordinate of the shot ending position.
+golf_shots,shot_end_lon,Float64,Longitude coordinate of the shot ending position.
+golf_shots,yardage,Float64,Source-provided yardage for the shot.
+golf_shots,yardage_to_pin,Float64,"Distance remaining to the pin at the time of the shot, when available."
+golf_shots,yardage_calc,float64,Calculated yardage between shot start and end using coordinates.
+golf_shots,yardage_error,Float64,Difference between calculated and source-provided yardage.
+golf_shots,yardage_error_abs,Float64,Absolute value of the difference between calculated and source yardage.
+golf_shots,yardage_error_pct,Float64,Absolute percentage difference between calculated and source yardage.
+golf_shots,yardage_suspect,boolean,Flag for shots where yardage discrepancy exceeded a threshold.
+golf_shots,shot_fairway_hit_type,string,Fairway result for tee shot or primary stroke from source app.
+golf_shots,hole_lat,Float64,Hole centroid latitude carried down for mapping shot context.
+golf_shots,hole_lon,Float64,Hole centroid longitude carried down for mapping shot context.
+golf_shots,hole_par,Int64,Par value of the parent hole.
+golf_shots,hole_par_bucket,string,Bucketed representation of hole par (Par 3/4/5).
+golf_shots,hole_score,Int64,Total strokes taken on the parent hole.
+golf_shots,hole_strokes_over_par,Int64,Stroke differential vs par on the parent hole.
+golf_shots,hole_score_name,string,Named scoring outcome for the parent hole.
+golf_shots,hole_fairway_strokes,Int64,
+golf_shots,hole_putts,Int64,Putts taken on the parent hole.
+golf_shots,hole_putts_over_expected,Int64,Parent hole putts vs simple expectation (putts - 2).
+golf_shots,hole_gir,boolean,True if parent hole was a green in regulation.
+golf_shots,hole_putts_3plus,boolean,True if parent hole had 3+ putts.
+golf_shots,hole_gir_putts_3plus,boolean,True if parent hole was GIR with 3+ putts.
+golf_shots,hole_notgir_putts_3plus,boolean,True if parent hole was non-GIR with 3+ putts.
+golf_shots,hole_scramble_opportunity,boolean,True if parent hole presented a scramble opportunity.
+golf_shots,hole_scramble_success,boolean,True if scramble opportunity on parent hole was converted.
+golf_shots,hole_gir_wasted,boolean,True if parent hole GIR resulted in over-par score.
+golf_shots,hole_notgir_chip_in,boolean,True if parent hole included a chip-in from off the green.
+golf_shots,hole_is_scoring_chance,boolean,True if parent hole represented a scoring chance.
+golf_shots,hole_is_recovery,boolean,True if parent hole represented a recovery hole.
+golf_shots,round_score,Int64,Parent round score carried down for shot-level analysis.
+golf_shots,round_putts,Int64,Parent round putts carried down.
+golf_shots,round_gir,float64,Parent round GIR metric carried down.
+golf_shots,round_holes_scored,Int64,Number of scored holes in the parent round.
+golf_shots,round_no_player,Int64,Round sequence index per player carried down.
+golf_shots,round_no_player_course,Int64,Round sequence index per player×course carried down.
+golf_shots,round_dt,datetime64[ns],Parent round timestamp carried down.
+golf_shots,date,string,Parent round date carried down.
+golf_shots,dow,string,Parent round day-of-week label carried down.
+golf_shots,is_weekend,bool,Parent round weekend flag carried down.
+golf_shots,part_of_day,string,Parent round part-of-day bucket carried down.
+golf_shots,year,Int64,Year from parent round_dt.
+golf_shots,month,Int64,Month from parent round_dt.
+golf_shots,month_name,string,Month label from parent round_dt.
+golf_shots,year_month,string,Year-month from parent round_dt.
+golf_shots,season,string,Season from parent round_dt.
+facilities,facility,object,Facility or club name as observed in GolfShot rounds.
+facilities,course,object,"Course or loop name at the facility (e.g., Front 9, Back 9)."
+facilities,first_seen_round_dt,datetime64[ns],Earliest round_dt observed for this facility×course in the dataset.
+facilities,last_seen_round_dt,datetime64[ns],Most recent round_dt observed for this facility×course.
+facilities,rounds_observed,int64,Number of distinct rounds played on this facility×course.
+facilities,hint_city,object,User-supplied city hint to assist geocoding and API matching.
+facilities,hint_state_abbr,object,User-supplied two-letter state abbreviation to assist matching.
+facilities,facility_course_key,object,Stable join key used to link facilities to API enrichment cache.
+facilities,shot_centroid_lat,Float64,Median latitude of observed shots on this facility×course.
+facilities,shot_centroid_lon,Float64,Median longitude of observed shots on this facility×course.
+facilities,shots_used_for_centroids,Float64,Number of shot records used to compute the centroid.
+facilities,geo_lat,float64,Canonical facility latitude derived from centroids and geocoding.
+facilities,geo_lon,float64,Canonical facility longitude derived from centroids and geocoding.
+facilities,geo_source,object,"Source of geo_lat/geo_lon (e.g., shot_centroid, nominatim, arcgis)."
+facilities,geo_query_used,object,Text of the query sent to external geocoders for this facility×course.
+facilities,facility_tz,object,IANA time zone inferred from coordinates or defaulted for missing coords.
+facilities_api_cache,facility_course_key,object,Join key linking facilities to API cache row.
+facilities_api_cache,api_course_id,float64,"Course identifier returned by GolfCourseAPI, if matched."
+facilities_api_cache,api_payload_json,object,Raw JSON payload from GolfCourseAPI course detail endpoint.
+facilities_api_cache,api_query_used,object,Actual query string sent to GolfCourseAPI search endpoint.
+facilities_api_cache,api_last_checked_ts,object,UTC timestamp when this facility×course was last checked against the API.
+facilities_api_cache,api_match_strategy,float64,Numeric or categorical indicator describing the matching strategy used.
+facilities_api_cache,api_last_note,object,Free-text log summarizing last API attempt or outcome.
+facilities_api_cache,api_success,bool,Boolean indicating whether a successful match was recorded.
+facilities_api_cache,api_tried_all_strategies,bool,True if all auto strategies were attempted without a confirmed match.
+facilities_api_cache,run_api_again,bool,User-controlled flag indicating whether this row should be retried.
+facilities_api_cache,user_query,float64,User-provided override query for manual rematching via the API.
+player_club_profile,player_name,object,Golfer name for this club profile row.
+player_club_profile,shot_club,object,"Club name (e.g., 1W, 5I, PW) for this profile row."
+player_club_profile,shot_count,Int64,Number of valid shots contributing to this club’s profile.
+player_club_profile,yardage_mean,Float64,Average yardage
+player_club_profile,yardage_std,Float64,Std dev of yardage
+player_club_profile,yardage_min,Float64,Shortest shot observed
+player_club_profile,yardage_max,Float64,Longest shot observed
+player_club_profile,yardage_p25,Float64,25th percentile yardage
+player_club_profile,yardage_p30,Float64,30th percentile yardage (plan_distance_short)
+player_club_profile,yardage_p60,Float64,60th percentile yardage (plan_distance_hit)
+player_club_profile,yardage_p85,Float64,85th percentile yardage (plan_distance_long)
+player_club_profile,yardage_p90,Float64,90th percentile yardage (rarely achieved distance)
+player_club_profile,top5_max_yardages,object,5 longest shots logged for this player+club
+player_club_profile,plan_distance_short,Float64,"Conservative planning distance (e.g., p30) for this club."
+player_club_profile,plan_distance_hit,Float64,"Typical strong-strike distance (e.g., p60) for this club."
+player_club_profile,plan_distance_long,Float64,"Upper bound planning distance (e.g., p85) for this club."
+player_club_profile,app_pct_unknown,float64,Percentage of shots with unknown or unclassified directional outcome.
+player_club_profile,app_pct_left,float64,Percentage of shots classified as left misses for this club.
+player_club_profile,app_pct_right,float64,Percentage of shots classified as right misses for this club.
+player_club_profile,app_pct_short,float64,Percentage of shots classified as short relative to target for this club.
+player_club_profile,app_pct_long,float64,Percentage of shots classified as long relative to target for this club.
+player_club_profile,app_pct_hit,float64,Percentage of shots classified as on-target for this club.
+player_club_profile,shots_sufficient,boolean,True if shot_count meets a minimum threshold for stable inference.
+player_club_profile,plan_dispersion,float64,Typical total lateral dispersion width in yards used for planning.
+player_club_profile,dispersion_hole_count,float64,Number of holes contributing to this club’s dispersion estimate.
+player_club_profile,dispersion_shot_count,float64,Total number of shots contributing to this club’s dispersion estimate.
+player_club_profile,disp_half_angle_rad,float64,Half-angle of the planning cone in radians calibrated from driver.
+player_club_profile,disp_half_angle_deg,float64,Half-angle of the planning cone in degrees calibrated from driver.
+player_club_profile,disp_tan_half_angle,float64,Tangent of the half-angle; used to scale widths by distance.
+player_club_profile,plan_dispersion_short,float64,Planned dispersion width at conservative distance (p30) using calibrated cone angle.
+player_club_profile,plan_dispersion_hit,float64,Planned dispersion width at typical hit distance (p60) using calibrated cone angle.
+player_club_profile,plan_dispersion_long,float64,Planned dispersion width at long distance (p85) using calibrated cone angle.
+player_club_profile,join_key,int64,
+player_club_profile,join_key_cone,object,
+player_club_profile,join_key_aim,object,
+player_club_hole_dispersion,player_name,object,Golfer name for this player×club×hole dispersion row.
+player_club_hole_dispersion,shot_club,object,Club used on this hole for dispersion calculation.
+player_club_hole_dispersion,facility,object,Facility/club where these shots were taken.
+player_club_hole_dispersion,course,object,Course/loop where these shots were taken.
+player_club_hole_dispersion,hole_number,int64,Hole number associated with this dispersion record.
+player_club_hole_dispersion,shots_used,int64,Number of shots used to compute dispersion metrics on this hole.
+player_club_hole_dispersion,left_dispersion_yards,float64,Percentile-based left-side dispersion distance in yards.
+player_club_hole_dispersion,right_dispersion_yards,float64,Percentile-based right-side dispersion distance in yards.
+player_club_hole_dispersion,total_dispersion_yards,float64,Sum of left and right dispersion widths at the chosen percentile.
+player_club_hole_dispersion,length_p50,float64,Median down-range distance for shots on this hole for this club.
+player_club_hole_dispersion,length_pX,float64,Down-range distance at the chosen dispersion percentile.
+player_club_hole_dispersion,length_max,float64,Maximum down-range distance observed for this club on this hole.
+player_club_hole_dispersion,calc_start_lat,float64,Latitude of calculated origin point for the hole’s line of play.
+player_club_hole_dispersion,calc_start_lon,float64,Longitude of calculated origin point for the hole’s line of play.
+player_club_hole_dispersion,calc_end_lat,float64,Latitude of calculated target point for the hole’s line of play.
+player_club_hole_dispersion,calc_end_lon,float64,Longitude of calculated target point for the hole’s line of play.
+player_club_dispersion_rollup,player_name,object,Golfer name for this player×club rollup record.
+player_club_dispersion_rollup,shot_club,object,Club name for this rollup record.
+player_club_dispersion_rollup,holes_contributing,int64,Number of distinct holes used in the club-level dispersion rollup.
+player_club_dispersion_rollup,club_left_dispersion_yards,float64,Rollup left-side dispersion estimate in yards for the club.
+player_club_dispersion_rollup,club_right_dispersion_yards,float64,Rollup right-side dispersion estimate in yards for the club.
+player_club_dispersion_rollup,club_total_dispersion_yards,float64,Rollup total lateral dispersion width (left + right) in yards.
+player_club_dispersion_rollup,total_shots_used,int64,Total number of shots across all holes contributing to the rollup.
+player_club_dispersion_rollup,dispersion_sufficient,bool,True if holes_contributing reaches a confidence threshold for the club.
