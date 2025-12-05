@@ -8,6 +8,12 @@
 
 ---
 
+## 📽️ Project Walkthrough Video
+
+![Walkthrough Demo](video.mp4)
+
+---
+
 ## 📘 Overview
 
 This project demonstrates how a professional analytics team would design, document, and deliver a **governed data-engineering pipeline** for sports performance.  
