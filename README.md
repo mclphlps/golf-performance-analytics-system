@@ -171,7 +171,7 @@ Each notebook cell begins with a standardized metadata header:
 - [x] All secrets managed via `.env`  
 - [x] All raw and processed governed outputs stored in `data/` (ignored)  
 - [x] Governance logs and data dictionary export automatically to `deliverables/` 
-- [x] Tableau and Project WBS located in `deliverables/`  
+- [x] Project WBS located in `deliverables/`  
 - [x] Conda environment pinned via `environment.yml`  
 
 ---
