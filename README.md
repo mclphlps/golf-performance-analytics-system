@@ -65,7 +65,7 @@ The `.env` file is excluded from version control to protect secrets.
 
 ---
 
-## 🧩 Project Structure
+## 📁 Project Structure
 
 ```
 golf-capstone/
@@ -109,16 +109,16 @@ Every major phase produces auditable logs — **STEP_LOG**, **VALIDATION_LOG**, 
 
 ---
 
-## 🧠 Methodology Mapping — CRISP-DM × Six Sigma DMAIC
+## 🧠 Methodology Mapping — CRISP-DM
 
-| Phase | CRISP-DM Equivalent | Key Deliverables |
+| Phase | Key Deliverables |
 |:--|:--|:--|
-| **1️⃣ Define** | Business Understanding | Problem statement · Success metrics · Data inventory |
-| **2️⃣ Acquire** | Data Understanding | Raw GolfShot data · Initial profiling · Completeness checks |
-| **3️⃣ Prepare** | Data Preparation | Validated round, hole, shot, club, and facility tables |
-| **4️⃣ Analyze** | Modeling / Evaluation | Tableau dashboards · performance trends |
-| **5️⃣ Improve** | Deployment | Scenario analysis · Practice recommendations · On-course strategy recommendations |
-| **6️⃣ Control** | Maintenance | Governance package · Versioned exports · Documentation |
+| **1️⃣ Business Understanding** | Problem statement · Success metrics · Data inventory |
+| **2️⃣ Data Understanding** | Raw GolfShot data · Initial profiling · Completeness checks |
+| **3️⃣ Data Preparation** | Validated and normalized round, hole, shot, club, and facility tables |
+| **4️⃣ Modeling** | Tableau dashboards · Measure and Analyze performance |
+| **5️⃣ Evaluation** | Improve performance · Practice recommendations · On-course strategy recommendations |
+| **6️⃣ Deployment** | Control plan · Governance package · Versioned exports · Documentation |
 
 Each notebook cell begins with a standardized metadata header:
 
@@ -141,14 +141,14 @@ Each notebook cell begins with a standardized metadata header:
 
 ---
 
-## 📊 Current Phase 3 Deliverables
+## 🧩 Current Phase 3 Deliverables
 
 | Artifact | Description |
 |:--|:--|
 | **`rounds.csv`**, **`holes.csv`**, **`shots.csv`** | Fact tables with validated data |
 | **`clubs.csv`** | Player × club statistics (distance & dispersion) |
 | **`facilities.csv`** | Geocoded facility dimension |
-| **`phase3_delverables`** | Governance close-out folder: all logs + data dictionary |
+| **`phase3_delverables`** | Governance close-out folder · WBS · Presentation PNGs |
 
 ---
 
