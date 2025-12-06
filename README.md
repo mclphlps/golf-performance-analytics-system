@@ -8,12 +8,6 @@
 
 ---
 
-## 📽️ Project Walkthrough Video
-
-![Walkthrough Demo](video.mp4)
-
----
-
 ## 📘 Overview
 
 This project demonstrates how a professional analytics team would design, document, and deliver a **governed data-engineering pipeline** for sports performance.  
@@ -200,3 +194,31 @@ Developed by **Mike Phillips** as part of the **NewForce WV Data Analytics Bootc
 Special thanks to mentors for reinforcing *reproducibility, governance, and storytelling in analytics.*
 
 > *“Most of the professional projects I’ve worked on in the past are at the intersection of data, people, and improving business processes. I believe that in both my professional and personal life, “what gets measured gets managed.” — Mike Phillips*
+
+---
+
+## 📊 Presentation Slides and Dashboards
+
+![Opening](deliverables/Opening_DMAIC.png)
+
+![Define](deliverables/Define.png)
+
+![Measure: Performance](deliverables/Measure_Performance.png)
+
+![Measure: Test Assumptions](deliverables/Measure_Test_Assumptions.png)
+
+![Analyze: Errors](deliverables/Analyze_Errors.png)
+
+![Analyze: Distance](deliverables/Analyze_Actual_Distance.png)
+
+![Improve: Club-Level](deliverables/Improve_Club-Level.png)
+
+![Improve: Strategy Old Tee Shot](deliverables/Improve_Strategy_1.png)
+
+![Improve: Strategy New Tee Shot](deliverables/Improve_Strategy_2.png)
+
+![Improve: Strategy New Approach Shot](deliverables/Improve_Strategy_3.png)
+
+![Control](deliverables/Control.png)
+
+![Closing](deliverables/Closing.png)
