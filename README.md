@@ -112,7 +112,7 @@ Every major phase produces auditable logs — **STEP_LOG**, **VALIDATION_LOG**, 
 ## 🧠 Methodology Mapping — CRISP-DM
 
 | Phase | Key Deliverables |
-|:--|:--|:--|
+|:--|:--|
 | **1️⃣ Business Understanding** | Problem statement · Success metrics · Data inventory |
 | **2️⃣ Data Understanding** | Raw GolfShot data · Initial profiling · Completeness checks |
 | **3️⃣ Data Preparation** | Validated and normalized round, hole, shot, club, and facility tables |
